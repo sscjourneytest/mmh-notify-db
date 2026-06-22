@@ -1,0 +1,10 @@
+name = "mmh-notify-worker"
+main = "src/index.js"
+compatibility_date = "2026-06-01"
+
+# Binds the D1 database you already created (mmh-notify-db) to this Worker.
+# The Worker code refers to it as `env.DB` — that name must match exactly.
+[[d1_databases]]
+binding = "DB"
+database_name = "mmh-notify-db"
+database_id = "PASTE_YOUR_DATABASE_ID_HERE"
