@@ -7,4 +7,4 @@ compatibility_date = "2026-06-01"
 [[d1_databases]]
 binding = "DB"
 database_name = "mmh-notify-db"
-database_id = "PASTE_YOUR_DATABASE_ID_HERE"
+database_id = "5817909f-e885-4a35-a70f-502fa53265aa"
