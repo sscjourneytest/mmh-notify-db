@@ -25,7 +25,8 @@ CREATE TABLE IF NOT EXISTS notifications (
     icon TEXT,                        -- optional custom icon url, falls back to default app icon
     created_at INTEGER NOT NULL DEFAULT (unixepoch()),
     sent_count INTEGER NOT NULL DEFAULT 0,   -- how many subscriptions it was pushed to
-    failed_count INTEGER NOT NULL DEFAULT 0  -- how many push deliveries failed (dead subscriptions)
+    failed_count INTEGER NOT NULL DEFAULT 0,  -- how many push deliveries failed (dead subscriptions)
+    send_status TEXT NOT NULL DEFAULT 'done'  -- 'sending' while batches are still going, 'done' once finished
 );
 
 CREATE INDEX IF NOT EXISTS idx_notifications_created ON notifications(created_at DESC);
