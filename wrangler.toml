@@ -2,6 +2,14 @@ name = "mmh-notify-worker"
 main = "src/index.js"
 compatibility_date = "2026-06-01"
 
+# Plaintext variables — defined here so they persist reliably across every
+# Git-triggered deploy. (Secrets like VAPID_PRIVATE and ADMIN_SECRET stay
+# in the dashboard's "Secret" type — never put real secrets in this file,
+# since it lives in your GitHub repo.)
+[vars]
+VAPID_PUBLIC = "BBO-xcx2zTHt2gA8h6qAZ-GhRCPDauo2rk_4Gw0_Vie4g38IE4UoSoskmMNpV24T7tgfnXfAijSr0ZEhJfU-fx4"
+VAPID_SUBJECT = "mailto:mockmatrixhub@gmail.com"
+
 # Binds the D1 database you already created (mmh-notify-db) to this Worker.
 # The Worker code refers to it as `env.DB` — that name must match exactly.
 [[d1_databases]]
