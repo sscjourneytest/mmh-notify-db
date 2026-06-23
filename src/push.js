@@ -45,13 +45,15 @@ function concatUint8Arrays(...arrays) {
  */
 async function getVapidSigningKey(vapidPrivateJwkString) {
   const jwk = JSON.parse(vapidPrivateJwkString);
-  return crypto.subtle.importKey(
+  /** @type {CryptoKey} */
+  const key = await crypto.subtle.importKey(
     "jwk",
     jwk,
     { name: "ECDSA", namedCurve: "P-256" },
     false,
     ["sign"]
   );
+  return key;
 }
 
 async function buildVapidJwt({ audience, subject, publicKeyB64Url, privateKeyJwkString }) {
@@ -82,6 +84,7 @@ async function encryptPayload(payload, p256dhB64Url, authB64Url) {
   const authSecret = base64UrlToUint8Array(authB64Url);
 
   // Generate an ephemeral local EC key pair for this message.
+  /** @type {CryptoKeyPair} */
   const localKeyPair = await crypto.subtle.generateKey(
     { name: "ECDH", namedCurve: "P-256" },
     true,
